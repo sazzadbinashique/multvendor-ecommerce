@@ -10,4 +10,8 @@ class BackEndController extends Controller
 
         return view('backend.index');
     }
+
+    public function test(){
+        return view('backend.test');
+    }
 }

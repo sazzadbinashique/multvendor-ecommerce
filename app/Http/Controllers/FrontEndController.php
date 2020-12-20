@@ -11,8 +11,9 @@ class FrontEndController extends Controller
     public function index(){
 
         $products = Product::orderBy('id', 'asc')->limit(10)->get();
+//        dd($products);
         $latestProducts = Product::orderBy('id', 'desc')->limit(10)->get();
-
+//        dd($latestProducts);
         $categoryProducts = Product::orderBy('category_id')->get();
 
 

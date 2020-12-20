@@ -30,11 +30,8 @@ Route::get('/cart/decr/{id}/{qty}', [ShoppingController::class, 'decr'])->name('
 Route::get('/cart/rapid/add/{id}', [ShoppingController::class, 'rapid_add'])->name('cart.rapid.add');
 
 
-
-
-
-
 Route::get('/home', [ BackEndController::class, 'index'])->middleware('auth');
+
 
 Route::resource('users', App\Http\Controllers\UserController::class);
 

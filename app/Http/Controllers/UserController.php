@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Session;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUser;
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -15,7 +20,7 @@ class UserController extends Controller
     public function index()
     {
 
-        $users= User::paginate(10);
+        $users= User::paginate(5);
 
         return view('user.index', compact('users'));
     }
@@ -37,9 +42,20 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        //
+
+        $user= new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->passsword);
+        $user->created_at = date('Y-m-d H:i:s');
+        $user->updated_at = null;
+        $user->save();
+
+        Session::flash('success', 'User has been created sucessfully ');
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -61,7 +77,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+
+        return  view('user.edit', compact('user'));
     }
 
     /**
@@ -71,9 +89,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->passsword);
+        $user->updated_at = date('Y-m-d H:i:s');
+        $user->update();
+
+        Session::flash('success', 'User has been Updated sucessfully ');
+
+        return redirect()->back();
     }
 
     /**
@@ -84,6 +111,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+
+        Session::flash('success', 'User has been deleted sucessfully ');
+
+        return redirect()->back();
     }
 }

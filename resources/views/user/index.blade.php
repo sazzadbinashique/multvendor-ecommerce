@@ -25,7 +25,16 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
+
                         <div class="card">
+                            @if(Session::has('success'))
+                                <div class="alert alert-success">
+                                    {{ Session::get('success') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
                             <div class="card-header">
                                 <h3 class="card-title float-right">
                                     <a href="{{route('users.create')}}" class="btn btn-success btn-group-sm">Add New</a>
@@ -62,7 +71,14 @@
                                         <td>{{$user->email}}</td>
                                         <td>{{$user->created_at}}</td>
                                         <td>{{$user->updated_at}}</td>
-                                        <td><a href="" class="btn btn-sm btn-danger">delete</a></td>
+
+                                        <td>
+                                            <form action="{{ route('users.destroy', $user->id) }}" method="post">
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
+                                                <button class="btn btn-sm btn-danger">Delete</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                     @endforeach
                                     </tbody>
