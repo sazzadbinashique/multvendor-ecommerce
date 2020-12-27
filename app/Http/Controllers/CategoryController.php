@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Session;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,7 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::paginate(10);
+
+        return view('admin.category.index', compact('categories'));
     }
 
     /**
@@ -24,7 +27,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+
+        return  view('admin.category.create');
     }
 
     /**
@@ -35,8 +39,27 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category;
+        $str = strtolower($request->name);
+
+        $category->name = $request->name;
+        $category->alias = preg_replace('/\s+/', '-', $str);
+        $category->description = $request->description;
+        $category->status = $request->status;
+
+        $logo_image = $request->image;
+        $logo_image_new_name = time() . $logo_image->getClientOriginalName();
+        $logo_image->move('uploads/categories', $logo_image_new_name);
+        $category->image = 'uploads/categories/' . $logo_image_new_name;
+        $category->save();
+
+        Session::flash('success', 'Category has been created successfully ');
+
+        return redirect()->route('categories.index');
+
     }
+
+
 
     /**
      * Display the specified resource.
@@ -57,7 +80,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.category.edit', compact( 'category'));
     }
 
     /**
@@ -69,7 +92,25 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $str = strtolower($request->name);
+
+        $category->name = $request->name;
+        $category->alias = preg_replace('/\s+/', '-', $str);
+        $category->description = $request->description;
+        $category->status = $request->status;
+
+        $logo_image = $request->image;
+        if (!empty($logo_image)){
+            $logo_image_new_name = time() . $logo_image->getClientOriginalName();
+            $logo_image->move('uploads/categories', $logo_image_new_name);
+            $category->image = 'uploads/categories/' . $logo_image_new_name;
+
+        }
+        $category->update();
+
+        Session::flash('success', 'Category has been Updated Successfully ');
+
+        return redirect()->back();
     }
 
     /**
@@ -80,6 +121,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        Session::flash('success', 'Category has been deleted successfully ');
+
+        return redirect()->back();
     }
 }

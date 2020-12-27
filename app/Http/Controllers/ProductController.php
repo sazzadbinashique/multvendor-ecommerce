@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
+use Session;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,7 +17,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::paginate(10);
+
+        return view('admin.product.index', compact('products'));
+
     }
 
     /**
@@ -24,7 +30,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+
+        return view('admin.product.create', compact('categories'));
     }
 
     /**
@@ -35,7 +43,24 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new Product;
+        $str = strtolower($request->name);
+
+        $product->name = $request->name;
+        $product->alias = preg_replace('/\s+/', '-', $str);
+        $product->category_id = $request->category_id;
+        $product->price = $request->price;
+        $product->description = $request->description;
+
+        $product_image = $request->image;
+        $product_image_new_name = time() . $product_image->getClientOriginalName();
+        $product_image->move('uploads/products', $product_image_new_name);
+        $product->image = 'uploads/products/' . $product_image_new_name;
+        $product->save();
+
+        Session::flash('success', 'Product has been created successfully ');
+
+        return redirect()->route('products.index');
     }
 
     /**
@@ -57,7 +82,10 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $categories = Category::all();
+
+        return view('admin.product.edit', compact( 'product', 'categories'));
+
     }
 
     /**
@@ -69,7 +97,24 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $str = strtolower($request->name);
+
+        $product->name = $request->name;
+        $product->alias = preg_replace('/\s+/', '-', $str);
+        $product->price = $request->price;
+        $product->description = $request->description;
+
+        $product_image = $request->image;
+        if (!empty($product_image)){
+            $product_image_new_name = time() . $product_image->getClientOriginalName();
+            $product_image->move('uploads/products', $product_image_new_name);
+            $product->image = 'uploads/products/' . $product_image_new_name;
+        }
+        $product->update();
+
+        Session::flash('success', 'Product has been Updated successfully ');
+
+        return redirect()->back();
     }
 
     /**
@@ -80,6 +125,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        Session::flash('success', 'Product has been deleted successfully ');
+
+        return redirect()->back();
     }
 }

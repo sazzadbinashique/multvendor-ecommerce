@@ -12,22 +12,39 @@
                     </div>
                     <div class="topbar-menu right-menu">
                         <ul>
-                            <li class="menu-item" ><a title="Register or Login" href="{{route('login')}}">Login</a></li>
-                            <li class="menu-item" ><a title="Register or Login" href="{{'register'}}">Register</a></li>
-                            <li class="menu-item lang-menu menu-item-has-children parent">
-                                <a title="English" href="#"><span class="img label-before"><img src="{{asset('assets/images/lang-en.png')}}" alt="lang-en"></span>English<i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                <ul class="submenu lang" >
-                                    <li class="menu-item" ><a title="hungary" href="#"><span class="img label-before"><img src="{{asset('assets/images/lang-hun.png')}}" alt="lang-hun"></span>Hungary</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item menu-item-has-children parent" >
-                                <a title="Dollar (USD)" href="#">Dollar (USD)<i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                <ul class="submenu curency" >
-                                    <li class="menu-item" >
-                                        <a title="Pound (GBP)" href="#">Pound (GBP)</a>
-                                    </li>
-                                </ul>
-                            </li>
+                            @guest
+                                @if (Route::has('login'))
+                                    <li class="menu-item" ><a title="Register or Login" href="{{route('login')}}">Login</a></li>
+
+                                @endif
+
+                                @if (Route::has('register'))
+                                    <li class="menu-item" ><a title="Register or Login" href="{{route('seller.register')}}">Be A Seller</a></li>
+                                @endif
+                            @else
+                                <li class="menu-item" ><a href="{{route('user.profile')}}">My Account</a></li>
+
+                                <li class="menu-item" ><a href="{{'logout'}}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}</a></li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none">
+                                    @csrf
+                                </form>
+                            @endguest
+                                <li class="menu-item lang-menu menu-item-has-children parent">
+                                    <a title="English" href="#"><span class="img label-before"><img src="{{asset('assets/images/lang-en.png')}}" alt="lang-en"></span>English<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                    <ul class="submenu lang" >
+                                        <li class="menu-item" ><a title="hungary" href="#"><span class="img label-before"><img src="{{asset('assets/images/lang-hun.png')}}" alt="lang-hun"></span>Hungary</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item menu-item-has-children parent" >
+                                    <a title="Dollar (USD)" href="#">Dollar (USD)<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                    <ul class="submenu curency" >
+                                        <li class="menu-item" >
+                                            <a title="Pound (GBP)" href="#">Pound (GBP)</a>
+                                        </li>
+                                    </ul>
+                                </li>
                         </ul>
                     </div>
                 </div>
