@@ -39,7 +39,7 @@
                             <div class="card-header">
                                 <h3 class="card-title">New Category Create</h3>
                             </div>
-                            <form action="{{route('categories.store')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <form action="{{route('admin.categories.store')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                                 {{csrf_field()}}
                                 <div class="card-body">
                                     <div class="form-group row">
@@ -77,7 +77,7 @@
 
                                 </div>
                                 <div class="card-footer">
-                                    <a href="{{route('categories.index')}}" class="btn btn-info">Cancel</a>
+                                    <a href="{{route('admin.categories.index')}}" class="btn btn-info">Cancel</a>
                                     <button type="submit" class="btn btn-success float-right">Save</button>
                                 </div>
                             </form>

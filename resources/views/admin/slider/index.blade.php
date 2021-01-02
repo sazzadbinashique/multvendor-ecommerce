@@ -37,7 +37,7 @@
                             @endif
                             <div class="card-header">
                                 <h3 class="card-title float-right">
-                                    <a href="{{route('sliders.create')}}" class="btn btn-success btn-group-sm">Add New</a>
+                                    <a href="{{route('admin.sliders.create')}}" class="btn btn-success btn-group-sm">Add New</a>
                                 </h3>
                                 <div class="card-tools float-left">
                                     <div class="input-group">
@@ -69,7 +69,7 @@
                                     @foreach( $sliders as $slider)
                                         <tr>
                                             <td>{{$slider->id}}</td>
-                                            <td><a href="{{route('sliders.edit', $slider->id)}}">{{$slider->title}}</a></td>
+                                            <td><a href="{{route('admin.sliders.edit', $slider->id)}}">{{$slider->title}}</a></td>
                                             <td>
                                                 <img src="{{asset($slider->image)}}" alt="" class="img-responsive" style="width: 60px; height: 50px;">
                                             </td>
@@ -82,7 +82,7 @@
 
 
                                             <td>
-                                                <form action="{{ route('sliders.destroy', $slider->id) }}" method="post">
+                                                <form action="{{ route('admin.sliders.destroy', $slider->id) }}" method="post">
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}
                                                     <button class="btn btn-sm btn-danger">Delete</button>

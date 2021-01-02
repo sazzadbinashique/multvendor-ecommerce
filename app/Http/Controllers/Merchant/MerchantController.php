@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers\Merchant;
 
+
+use Session;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Product;
 use App\Models\Shop;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -14,8 +19,10 @@ class MerchantController extends Controller
 {
 
     public function dashboard(){
-
-        return view('merchant.dashboard');
+        $total_categories = Category::count();
+        $total_brands = Brand::count();
+        $total_products = Product::count();
+        return view('merchant.dashboard', compact('total_categories', 'total_brands', 'total_products'));
     }
 
     public function registerView(){
@@ -84,7 +91,6 @@ class MerchantController extends Controller
 
         $request->validate([
             'name'      => 'required|string',
-            'email'     => 'required|email',
         ]);
         $user = Auth::user();
         /*
@@ -100,8 +106,24 @@ class MerchantController extends Controller
 
         }
         $user->name = $request->name;
-        $user->email = $request->email;
         $user->save();
+
+        Session::flash('success', 'Merchant Profile has been Updated Successfully');
+
+        return redirect()->back();
+    }
+
+    public function updatePassword(Request  $request){
+        $request->validate([
+            'password' => 'required|min:8|confirmed',
+            'password_confirmation'     => 'required',
+        ]);
+
+        $user = Auth::user();
+        $user->password = Hash::make($request->password);
+        $user->update();
+
+        Session::flash('success', 'Merchant password has been Updated Successfully');
 
         return redirect()->back();
     }

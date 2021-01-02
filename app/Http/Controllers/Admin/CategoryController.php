@@ -57,7 +57,7 @@ class CategoryController extends Controller
 
         Session::flash('success', 'Category has been created successfully ');
 
-        return redirect()->route('categories.index');
+        return redirect()->route('admin.categories.index');
 
     }
 

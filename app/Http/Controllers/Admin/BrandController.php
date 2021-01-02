@@ -49,7 +49,7 @@ class BrandController extends Controller
 
         Session::flash('success', 'Brand has been created successfully ');
 
-        return redirect()->route('brands.index');
+        return redirect()->route('admin.brands.index');
 
     }
 

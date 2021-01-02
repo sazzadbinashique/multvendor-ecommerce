@@ -21,7 +21,7 @@ class ProductController extends Controller
     {
         $products = Product::paginate(10);
 
-        return view('admin.product.index', compact('products'));
+        return view('merchant.product.index', compact('products'));
 
     }
 
@@ -34,7 +34,7 @@ class ProductController extends Controller
     {
         $categories = Category::all();
 
-        return view('admin.product.create', compact('categories'));
+        return view('merchant.product.create', compact('categories'));
     }
 
     /**
@@ -62,7 +62,7 @@ class ProductController extends Controller
 
         Session::flash('success', 'Product has been created successfully ');
 
-        return redirect()->route('products.index');
+        return redirect()->route('merchant.products.index');
     }
 
     /**
@@ -86,7 +86,7 @@ class ProductController extends Controller
     {
         $categories = Category::all();
 
-        return view('admin.product.edit', compact( 'product', 'categories'));
+        return view('merchant.product.edit', compact( 'product', 'categories'));
 
     }
 

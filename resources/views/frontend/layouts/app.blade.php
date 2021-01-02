@@ -32,7 +32,7 @@
 <!--header-->
 @include('frontend.partials.header')
 
-<main id="main" class="main-site">
+<main id="main" class="main-site @if(Request::url('/shop') == 'http://localhost:8000/shop' ) left-sidebar @endif">
     {{--@if($errors->count() > 0)
         <ul class="list-group">
             @foreach($errors->all() as $error)

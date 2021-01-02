@@ -38,7 +38,7 @@
                             <div class="card-header">
                                 <h3 class="card-title">New Banner Create</h3>
                             </div>
-                            <form action="{{route('brands.store')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <form action="{{route('admin.brands.store')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                                 {{csrf_field()}}
                                 <div class="card-body">
                                     <div class="form-group row">
@@ -58,7 +58,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <a href="{{route('brands.index')}}" class="btn btn-info">Cancel</a>
+                                    <a href="{{route('admin.brands.index')}}" class="btn btn-info">Cancel</a>
                                     <button type="submit" class="btn btn-success float-right">Save</button>
                                 </div>
                             </form>

@@ -28,7 +28,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title float-right">
-                                    <a href="{{route('products.create')}}" class="btn btn-success btn-group-sm">Add New</a>
+                                    <a href="{{route('merchant.products.create')}}" class="btn btn-success btn-group-sm">Add New</a>
                                 </h3>
                                 <div class="card-tools float-left">
                                     <div class="input-group">
@@ -60,7 +60,7 @@
                                     @foreach( $products  as $product)
                                         <tr>
                                             <td>{{$product->id}}</td>
-                                            <td><a href="{{route('products.edit', $product->id)}}">{{$product->name}}</a></td>
+                                            <td><a href="{{route('merchant.products.edit', $product->id)}}">{{$product->name}}</a></td>
                                             <td>
                                                 <img src="{{asset($product->image)}}" alt="Product-Image" style="width: 60px; height: 40px;">
                                             </td>
@@ -68,7 +68,7 @@
                                             <td>{{$product->created_at}}</td>
                                             <td>{{$product->updated_at}}</td>
                                             <td>
-                                                <form action="{{ route('products.destroy', $product->id) }}" method="post">
+                                                <form action="{{ route('merchant.products.destroy', $product->id) }}" method="post">
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}
                                                     <button class="btn btn-sm btn-danger">Delete</button>

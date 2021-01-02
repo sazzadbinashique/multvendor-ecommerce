@@ -48,7 +48,7 @@ class UserController extends Controller
         $user= new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = Hash::make($request->passsword);
+        $user->password = Hash::make($request->password);
         $user->created_at = date('Y-m-d H:i:s');
         $user->updated_at = null;
         $user->save();
@@ -94,7 +94,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = Hash::make($request->passsword);
+        $user->password = Hash::make($request->password);
         $user->updated_at = date('Y-m-d H:i:s');
         $user->update();
 

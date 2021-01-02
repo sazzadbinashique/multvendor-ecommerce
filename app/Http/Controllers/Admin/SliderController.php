@@ -56,7 +56,7 @@ class SliderController extends Controller
 
         Session::flash('success', 'Slider has been created successfully ');
 
-        return redirect()->route('sliders.index');
+        return redirect()->route('admin.sliders.index');
 
     }
 

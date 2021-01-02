@@ -19,7 +19,7 @@ class BannerController extends Controller
     {
         $banners = Banner::paginate(10);
 
-        return  view('admin.banner.index', compact('banners'));
+        return  view('merchant.banner.index', compact('banners'));
     }
 
     /**
@@ -29,7 +29,7 @@ class BannerController extends Controller
      */
     public function create()
     {
-        return view('admin.banner.create');
+        return view('merchant.banner.create');
     }
 
     /**
@@ -54,7 +54,7 @@ class BannerController extends Controller
 
         Session::flash('success', 'Banner has been created successfully ');
 
-        return redirect()->route('banners.index');
+        return redirect()->route('merchant.banners.index');
     }
 
     /**
@@ -76,7 +76,7 @@ class BannerController extends Controller
      */
     public function edit(Banner $banner)
     {
-        return view('admin.banner.edit', compact('banner'));
+        return view('merchant.banner.edit', compact('banner'));
     }
 
     /**

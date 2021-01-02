@@ -32,7 +32,7 @@
                 <!-- Menu Footer-->
                 <li class="user-footer">
                     <div class="pull-left" style="float: left">
-                        <a href="{{route('profile')}}" class="btn btn-default btn-flat">Profile</a>
+                        <a href="{{(auth()->user()->role_id == 1)? route('admin.profile'): route('merchant.profile')}}" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right" style="float: right">
                         <a class="btn btn-default btn-flat" href="{{ route('logout') }}"

@@ -51,17 +51,25 @@
                         <div class="card">
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills">
-                                    <li class="nav-item"><a class="nav-link" href="#profile" data-toggle="tab">Setting Profile</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#change_password" data-toggle="tab">Change Password</a></li>
+                                    <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Profile</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">ChangePassword</a></li>
                                 </ul>
                             </div><!-- /.card-header -->
                             <div class="card-body">
+                                @if(Session::has('success'))
+                                    <div class="alert alert-success">
+                                        {{ Session::get('success') }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @endif
                                 <div class="tab-content">
-                                    <div class="tab-pane" id="profile">
-                                        <form action="{{route('update.profile')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+                                    <div class="active tab-pane" id="activity">
+                                        <form action="{{route('merchant.update.profile')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
                                             {{csrf_field()}}
                                             <div class="form-group row">
-                                                <label for="name" class="col-sm-2 col-form-label">Merchant Name</label>
+                                                <label for="name" class="col-sm-2 col-form-label">Name</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control" id="name" name="name" value="{{$user->name}}" placeholder="Merchant Name">
                                                 </div>
@@ -69,11 +77,11 @@
                                             <div class="form-group row">
                                                 <label for="email"  class="col-sm-2 col-form-label">Email</label>
                                                 <div class="col-sm-10">
-                                                    <input type="email" class="form-control" id="email" name="email" value="{{$user->email}}" placeholder="Email">
+                                                    <input type="email" class="form-control" id="email" name="email" value="{{$user->email}}" disabled>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="avatar" class="col-sm-2 col-form-label">Shop Logo</label>
+                                                <label for="avatar" class="col-sm-2 col-form-label">Avatar</label>
                                                 <div class="col-sm-3">
                                                     <img src="{{asset($user->avatar)}}" alt="shop-logo" class="img-responsive" style="width: 60px; height: 50px">
                                                 </div>
@@ -87,11 +95,38 @@
                                                 </div>
                                             </div>
                                         </form>
+
+                                    </div>
+                                    <div class="tab-pane" id="settings">
+                                        <form action="{{route('merchant.updatePassword')}}" method="POST"  class="form-horizontal">
+                                            {{csrf_field()}}
+                                            <div class="form-group row">
+                                                <label for="password" class="col-sm-2 col-form-label">password</label>
+                                                <div class="col-sm-10">
+                                                    <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="password">
+                                                    @error('password')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong class="bg-danger">{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="password_confirmation" class="col-sm-2 col-form-label">Confirmed password</label>
+                                                <div class="col-sm-10">
+                                                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="confirmed password">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="offset-sm-10 col-sm-2">
+                                                    <button type="submit" class="btn btn-success">Update</button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
-                            </div>
+                            </div><!-- /.card-body -->
                         </div>
-
                     </div>
 
                 </div>

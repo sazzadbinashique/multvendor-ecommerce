@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Merchant\MerchantController;
 use App\Http\Controllers\ShoppingController;
 use Illuminate\Support\Facades\Route;
@@ -22,9 +23,10 @@ use \App\Http\Controllers\Admin\BackEndController;
 Route::get('redirectTo', [HomeController::class, 'index']);
 
 Route::get('/', [ FrontEndController::class, 'index']);
+Route::get('/shop', [ FrontEndController::class, 'shop'])->name('shop');
 
-Route::get('/seller/register', [ \App\Http\Controllers\MerchantController::class, 'registerView'])->name('seller.register');
-Route::post('/seller/createNewRegister', [ \App\Http\Controllers\MerchantController::class, 'createNewRegister'])->name('seller.new.register');
+Route::get('/seller/register', [ MerchantController::class, 'registerView'])->name('seller.register');
+Route::post('/seller/createNewRegister', [ MerchantController::class, 'createNewRegister'])->name('seller.new.register');
 
 Route::get('/product/{alias}', [ FrontEndController::class, 'singleProduct'])->name('single.product');
 
@@ -35,15 +37,18 @@ Route::get('/cart/incr/{id}/{qty}', [ShoppingController::class, 'incr'])->name('
 Route::get('/cart/decr/{id}/{qty}', [ShoppingController::class, 'decr'])->name('cart.decr');
 Route::get('/cart/rapid/add/{id}', [ShoppingController::class, 'rapid_add'])->name('cart.rapid.add');
 
+Route::get('/cart/checkout', [CheckoutController::class, 'index'])->name('cart.checkout');
 
 
 /*Admin Route*/
 
-Route::group(['prefix'=>'admin', 'middleware'=>['auth', 'admin']], function (){
+Route::group(['prefix'=>'admin', 'middleware'=>['auth', 'admin'], 'as'=>'admin.'], function (){
 
-    Route::get('/dashboard', [ BackEndController::class, 'index'])->name('admin.dashboard');
+    Route::get('/dashboard', [ BackEndController::class, 'index'])->name('dashboard');
     Route::get('/profile', [ BackEndController::class, 'profile'])->name('profile');
     Route::post('/update/profile', [BackEndController::class, 'updateProfile'])->name('update.profile');
+    Route::post('/update/password/', [BackEndController::class, 'updatePassword'])->name('updatePassword');
+
     Route::resource('users', App\Http\Controllers\UserController::class);
     Route::resource('shops', App\Http\Controllers\Admin\ShopController::class);
     Route::resource('brands', App\Http\Controllers\Admin\BrandController::class);
@@ -58,13 +63,14 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth', 'admin']], function (){
 
 
 /*Merchant or Seller route*/
-Route::group(['prefix'=>'merchant', 'middleware'=>['auth', 'merchant']], function (){
+Route::group(['prefix'=>'merchant', 'middleware'=>['merchant'] ,'as'=>'merchant.'], function (){
 
-    Route::get('/dashboard', [ MerchantController::class, 'dashboard'])->name('merchant.dashboard');
+    Route::get('/dashboard', [ MerchantController::class, 'dashboard'])->name('dashboard');
     Route::get('/profile', [ MerchantController::class, 'profile'])->name('profile');
     Route::post('/update/profile', [MerchantController::class, 'updateProfile'])->name('update.profile');
     Route::get('/shop/profile', [ MerchantController::class, 'shopProfile'])->name('shop.profile');
     Route::post('/update/shop/profile', [ MerchantController::class, 'updateProfile'])->name('update.shop.profile');
+    Route::post('/update/password/', [MerchantController::class, 'updatePassword'])->name('updatePassword');
 
     Route::resource('brands', App\Http\Controllers\Merchant\BrandController::class);
     Route::resource('categories', App\Http\Controllers\Merchant\CategoryController::class);
@@ -78,6 +84,7 @@ Route::group(['middleware'=>[ 'user']], function (){
     Route::get('/profile', [FrontEndController::class, 'profile'])->name('user.profile');
     Route::post('/update/profile', [FrontEndController::class, 'updateProfile'])->name('user.updateProfile');
     Route::get('/change/password', [FrontEndController::class, 'changePassword'])->name('user.changePassword');
+    Route::post('/update/password/', [FrontEndController::class, 'updatePassword'])->name('user.updatePassword');
 });
 
 

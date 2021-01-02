@@ -19,7 +19,7 @@ class BrandController extends Controller
     {
         $brands = Brand::paginate(10);
 
-        return  view('admin.brand.index', compact('brands'));
+        return  view('merchant.brand.index', compact('brands'));
     }
 
     /**
@@ -29,7 +29,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        return view('admin.brand.create');
+        return view('merchant.brand.create');
     }
 
     /**
@@ -49,7 +49,7 @@ class BrandController extends Controller
 
         Session::flash('success', 'Brand has been created successfully ');
 
-        return redirect()->route('brands.index');
+        return redirect()->route('merchant.brands.index');
 
     }
 
@@ -72,7 +72,7 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        return  view('admin.brand.edit', compact('brand'));
+        return  view('merchant.brand.edit', compact('brand'));
     }
 
     /**

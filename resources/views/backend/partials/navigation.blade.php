@@ -29,7 +29,7 @@
                 </li>
                 <li class="nav-item">
                     @if(auth()->user()->role_id == 2)
-                    <a href="{{route('shop.profile')}}" class="nav-link">
+                    <a href="{{route('merchant.shop.profile')}}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>Shop</p>
                     </a>
@@ -38,7 +38,7 @@
                 <li class="nav-header">Store Management</li>
                 @if(auth()->user()->role_id == 1)
                     <li class="nav-item">
-                        <a href="{{route('shops.index')}}" class="nav-link">
+                        <a href="{{route('admin.shops.index')}}" class="nav-link">
                             <i class="nav-icon fas fa-list"></i>
                             <p>Shops</p>
                         </a>
@@ -53,13 +53,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('brands.index')}}" class="nav-link">
+                                <a href="{{route('admin.brands.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>All Brands</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('brands.create')}}" class="nav-link">
+                                <a href="{{route('admin.brands.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add Brand</p>
                                 </a>
@@ -76,13 +76,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('sliders.index')}}" class="nav-link">
+                                <a href="{{route('admin.sliders.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>All Slides</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('sliders.create')}}" class="nav-link">
+                                <a href="{{route('admin.sliders.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add Sliders</p>
                                 </a>
@@ -99,13 +99,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('banners.index')}}" class="nav-link">
+                                <a href="{{route('admin.banners.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>All Banners</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('banners.create')}}" class="nav-link">
+                                <a href="{{route('admin.banners.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add Banner</p>
                                 </a>
@@ -122,13 +122,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('categories.index')}}" class="nav-link">
+                                <a href="{{route('admin.categories.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>All Categories</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('categories.create')}}" class="nav-link">
+                                <a href="{{route('admin.categories.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add Category</p>
                                 </a>
@@ -145,13 +145,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('products.index')}}" class="nav-link">
+                                <a href="{{route('admin.products.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>All Products</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('products.create')}}" class="nav-link">
+                                <a href="{{route('admin.products.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add Product</p>
                                 </a>
@@ -169,13 +169,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('brands.index')}}" class="nav-link">
+                                <a href="{{route('merchant.brands.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>All Brands</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('brands.create')}}" class="nav-link">
+                                <a href="{{route('merchant.brands.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add Brands</p>
                                 </a>
@@ -192,13 +192,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('categories.index')}}" class="nav-link">
+                                <a href="{{route('merchant.categories.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>All Categories</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('categories.create')}}" class="nav-link">
+                                <a href="{{route('merchant.categories.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add Category</p>
                                 </a>
@@ -215,13 +215,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('products.index')}}" class="nav-link">
+                                <a href="{{route('merchant.products.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>All Products</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('products.create')}}" class="nav-link">
+                                <a href="{{route('merchant.products.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add Product</p>
                                 </a>
@@ -239,13 +239,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('users.index')}}" class="nav-link">
+                                <a href="{{route('admin.users.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>All Users</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('users.create')}}" class="nav-link">
+                                <a href="{{route('admin.users.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add User</p>
                                 </a>

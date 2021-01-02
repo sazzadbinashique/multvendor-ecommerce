@@ -69,7 +69,7 @@
                                             <td>{{$shop->updated_at}}</td>
                                             @if(Auth::user()->role->name == 'Merchant')
                                             <td>
-                                                <form action="{{ route('shops.destroy', $shop->id) }}" method="post">
+                                                <form action="{{ route('merchant.shops.destroy', $shop->id) }}" method="post">
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}
                                                     <button class="btn btn-sm btn-danger">Delete</button>

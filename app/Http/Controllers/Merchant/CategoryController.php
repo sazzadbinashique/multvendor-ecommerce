@@ -19,7 +19,7 @@ class CategoryController extends Controller
     {
         $categories = Category::paginate(10);
 
-        return view('admin.category.index', compact('categories'));
+        return view('merchant.category.index', compact('categories'));
     }
 
     /**
@@ -30,7 +30,7 @@ class CategoryController extends Controller
     public function create()
     {
 
-        return  view('admin.category.create');
+        return  view('merchant.category.create');
     }
 
     /**
@@ -57,7 +57,7 @@ class CategoryController extends Controller
 
         Session::flash('success', 'Category has been created successfully ');
 
-        return redirect()->route('categories.index');
+        return redirect()->route('merchant.categories.index');
 
     }
 
@@ -82,7 +82,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('admin.category.edit', compact( 'category'));
+        return view('merchant.category.edit', compact( 'category'));
     }
 
     /**

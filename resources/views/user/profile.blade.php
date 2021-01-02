@@ -23,17 +23,27 @@
 
             </div>
             <div class="col-lg-7 col-sm-6 col-md-7 col-xs-12">
+                @if(Session::has('success'))
+                    <div class="alert alert-success">
+                        {{ Session::get('success') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
                 <div class=" main-content-area">
                     <div class="wrap-login-item ">
                         <div class="register-form form-item ">
-                            <form class="form-stl" action="{{route('user.updateProfile')}}" name="frm-login" method="POST" >
+                            <form class="form-stl" action="{{route('user.updateProfile')}}" name="frm-login" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <fieldset class="wrap-title">
                                     <h3 class="form-title">Profile Information</h3>
                                 </fieldset>
                                 <fieldset class="wrap-input">
-                                    <label for="frm-reg-lname">Name*</label>
-                                    <input type="text" id="avatar" name="avatar" class="@error('avatar') is-invalid @enderror" placeholder="Last name*" value="{{$user->avatar}}">
+                                    <label for="frm-reg-lname">Profile Image*</label>
+                                    <img src="{{(!empty($user->avatar))? asset($user->avatar) : asset('adminlte/dist/img/avatar.png')}}" alt="shop-logo" class="img-responsive" style="width: 60px; height: 50px">
+                                    <hr>
+                                    <input type="file" id="avatar" name="avatar" class="@error('avatar') is-invalid @enderror" placeholder="Last name*" value="{{$user->avatar}}">
                                     @error('avatar')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

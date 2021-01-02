@@ -46,7 +46,7 @@
                             <div class="card-header">
                                 <h3 class="card-title">Update User</h3>
                             </div>
-                            <form action="{{route('users.update', $user->id)}}" method="post" class="form-horizontal">
+                            <form action="{{route('admin.users.update', $user->id)}}" method="post" class="form-horizontal">
                                 {{csrf_field()}}
                                 @method('PUT')
                                 <div class="card-body">
@@ -70,7 +70,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <a href="{{route('users.index')}}" class="btn btn-info">Cancel</a>
+                                    <a href="{{route('admin.users.index')}}" class="btn btn-info">Cancel</a>
                                     <button type="submit" class="btn btn-success float-right">Save</button>
                                 </div>
                             </form>

@@ -37,7 +37,7 @@
                             @endif
                             <div class="card-header">
                                 <h3 class="card-title float-right">
-                                    <a href="{{route('brands.create')}}" class="btn btn-success btn-group-sm">Add New</a>
+                                    <a href="{{route('admin.brands.create')}}" class="btn btn-success btn-group-sm">Add New</a>
                                 </h3>
                                 <div class="card-tools float-left">
                                     <div class="input-group">
@@ -68,7 +68,7 @@
                                     @foreach( $brands as $brand)
                                         <tr>
                                             <td>{{$brand->id}}</td>
-                                            <td><a href="{{route('brands.edit', $brand->id)}}">{{$brand->name}}</a></td>
+                                            <td><a href="{{route('admin.brands.edit', $brand->id)}}">{{$brand->name}}</a></td>
                                             <td>{{$brand->alias}}</td>
                                             <td>{{$brand->created_at}}</td>
                                             <td>{{$brand->updated_at}}</td>
@@ -78,7 +78,7 @@
 
 
                                             <td>
-                                                <form action="{{ route('brands.destroy', $brand->id) }}" method="post">
+                                                <form action="{{ route('admin.brands.destroy', $brand->id) }}" method="post">
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}
                                                     <button class="btn btn-sm btn-danger">Delete</button>

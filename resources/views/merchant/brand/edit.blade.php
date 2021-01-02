@@ -43,7 +43,7 @@ $statuses = [1 => 'Active', 0 => 'Disabled'];
                             <div class="card-header">
                                 <h3 class="card-title">New Brand Create</h3>
                             </div>
-                            <form action="{{route('brands.update', $brand->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <form action="{{route('merchant.brands.update', $brand->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                                 {{csrf_field()}}
                                 @method('PUT')
                                 <div class="card-body">
@@ -67,7 +67,7 @@ $statuses = [1 => 'Active', 0 => 'Disabled'];
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <a href="{{route('brands.index')}}" class="btn btn-info">Cancel</a>
+                                    <a href="{{route('merchant.brands.index')}}" class="btn btn-info">Cancel</a>
                                     <button type="submit" class="btn btn-success float-right">Update</button>
                                 </div>
                             </form>

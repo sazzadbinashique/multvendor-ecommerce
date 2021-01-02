@@ -21,7 +21,7 @@ class HomeController extends Controller
 
         }elseif (in_array('User', $checkrole)){
 
-            return redirect()->route('frontend.dashboard');
+            return redirect()->route('user.profile');
         }else{
             return redirect()->back();
         }

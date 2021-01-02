@@ -54,7 +54,7 @@ class BannerController extends Controller
 
         Session::flash('success', 'Banner has been created successfully ');
 
-        return redirect()->route('banners.index');
+        return redirect()->route('admin.banners.index');
     }
 
     /**

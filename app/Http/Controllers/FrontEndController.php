@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Actions\Fortify\PasswordValidationRules;
+use Illuminate\Support\Facades\Hash;
+use Session;
 use App\Models\Banner;
 use App\Models\Product;
 use App\Models\Slider;
@@ -11,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 
 class FrontEndController extends Controller
 {
+    use PasswordValidationRules;
 
     public function index(){
 
@@ -22,6 +25,12 @@ class FrontEndController extends Controller
         $bannerLongs = Banner::where('status', 1)->where('position', 1)->orderBy('id', 'asc')->limit(2)->get();
 
         return view('frontend.index', compact('products', 'latestProducts', 'categoryProducts', 'sliders', 'banners','bannerLongs'));
+    }
+
+
+    public function shop(){
+
+        return view('frontend.shop');
     }
 
     public function profile(){
@@ -36,21 +45,43 @@ class FrontEndController extends Controller
         $request->validate([
             'name'      => 'required',
             'email'     => 'required',
-            'avatar'     => 'required',
         ]);
         $user = Auth::user();
-        $user->avatar = $request->avatar;
         $user->name = $request->name;
         $user->email = $request->email;
+        $logo_image = $request->avatar;
+        if (!empty($logo_image)){
+            $logo_image_new_name = time() . $logo_image->getClientOriginalName();
+            $logo_image->move('uploads/users', $logo_image_new_name);
+            $user->avatar = 'uploads/users/' . $logo_image_new_name;
+
+        }
         $user->save();
+
+        Session::flash('success', 'User has been Updated Successfully');
 
         return redirect()->back();
     }
 
 
     public function changePassword(){
+        $user = Auth::user();
+        return view('user.changePassword',  compact('user'));
+    }
 
-        return view('user.changePassword');
+    public function updatePassword(Request  $request){
+        $request->validate([
+            'password' => 'required|min:8|confirmed',
+            'password_confirmation'     => 'required',
+        ]);
+
+        $user = Auth::user();
+        $user->password = Hash::make($request->password);
+        $user->update();
+
+        Session::flash('success', 'User password has been Updated Successfully');
+
+        return redirect()->back();
     }
 
     public function singleProduct($alias){

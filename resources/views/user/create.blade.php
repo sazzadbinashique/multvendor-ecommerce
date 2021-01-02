@@ -38,7 +38,7 @@
                         <div class="card-header">
                             <h3 class="card-title">New User Create</h3>
                         </div>
-                        <form action="{{route('users.store')}}" method="post" class="form-horizontal">
+                        <form action="{{route('admin.users.store')}}" method="post" class="form-horizontal">
                             {{csrf_field()}}
                             <div class="card-body">
                                 <div class="form-group row">
@@ -61,7 +61,7 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <a href="{{route('users.index')}}" class="btn btn-info">Cancel</a>
+                                <a href="{{route('admin.users.index')}}" class="btn btn-info">Cancel</a>
                                 <button type="submit" class="btn btn-success float-right">Save</button>
                             </div>
                         </form>

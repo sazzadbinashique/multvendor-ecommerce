@@ -80,7 +80,7 @@
                             <div class="card-body">
                                 <div class="tab-content">
                                     <div class="tab-pane" id="settings">
-                                        <form action="{{route('update.shop.profile')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+                                        <form action="{{route('merchant.update.shop.profile')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
                                             {{csrf_field()}}
                                             <div class="form-group row">
                                                 <label for="shop_name" class="col-sm-2 col-form-label">Shop Name</label>

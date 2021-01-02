@@ -37,7 +37,7 @@
                             <div class="card-header">
                                 <h3 class="card-title">Update Product</h3>
                             </div>
-                            <form action="{{route('products.update', $product->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <form action="{{route('merchant.products.update', $product->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                                 {{csrf_field()}}
                                 @method('PUT')
                                 <div class="card-body">
@@ -84,7 +84,7 @@
 
                                 </div>
                                 <div class="card-footer">
-                                    <a href="{{route('products.index')}}" class="btn btn-info">Cancel</a>
+                                    <a href="{{route('merchant.products.index')}}" class="btn btn-info">Cancel</a>
                                     <button type="submit" class="btn btn-success float-right">Update</button>
                                 </div>
                             </form>

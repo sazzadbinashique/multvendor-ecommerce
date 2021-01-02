@@ -37,7 +37,7 @@
                             @endif
                             <div class="card-header">
                                 <h3 class="card-title float-right">
-                                    <a href="{{route('categories.create')}}" class="btn btn-success btn-group-sm">Add New</a>
+                                    <a href="{{route('admin.categories.create')}}" class="btn btn-success btn-group-sm">Add New</a>
                                 </h3>
                                 <div class="card-tools float-left">
                                     <div class="input-group">
@@ -68,7 +68,7 @@
                                     @foreach( $categories as $category)
                                         <tr>
                                             <td>{{$category->id}}</td>
-                                            <td><a href="{{route('categories.edit', $category->id)}}">{{$category->name}}</a></td>
+                                            <td><a href="{{route('admin.categories.edit', $category->id)}}">{{$category->name}}</a></td>
                                             <td>
                                                 <img src="{{asset($category->image)}}" alt="" class="img-responsive" style="width: 60px; height: 50px;">
                                             </td>
@@ -80,7 +80,7 @@
 
 
                                             <td>
-                                                <form action="{{ route('categories.destroy', $category->id) }}" method="post">
+                                                <form action="{{ route('admin.categories.destroy', $category->id) }}" method="post">
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}
                                                     <button class="btn btn-sm btn-danger">Delete</button>

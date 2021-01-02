@@ -23,10 +23,27 @@
 
             </div>
             <div class="col-lg-7 col-sm-6 col-md-7 col-xs-12">
+                {{--@if($errors->count() > 0)
+                    <ul class="list-group">
+                        @foreach($errors->all() as $error)
+                            <li class="list-group-item text-danger">
+                                {{ $error }}
+                            </li>
+                        @endforeach
+                    </ul>
+                @endif--}}
+                @if(Session::has('success'))
+                    <div class="alert alert-success">
+                        {{ Session::get('success') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
                 <div class=" main-content-area">
                     <div class="wrap-login-item ">
                         <div class="register-form form-item ">
-                            <form class="form-stl" action="{{ route('register') }}" name="frm-login" method="POST" >
+                            <form class="form-stl" action="{{ route('user.updatePassword') }}"  method="POST" >
                                 @csrf
                                 <fieldset class="wrap-title">
                                     <h3 class="form-title">Change Password</h3>
@@ -36,7 +53,7 @@
                                     <input type="password" id="password" name="password" class="@error('password') is-invalid @enderror" placeholder="Password">
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong class="bg-danger">{{ $message }}</strong>
                                     </span>
                                     @enderror
                                 </fieldset>
@@ -44,7 +61,7 @@
                                     <label for="password_confirmation">Confirm Password *</label>
                                     <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password">
                                 </fieldset>
-                                <input type="submit" class="btn btn-sign" value="Update" name="register">
+                                <input type="submit" class="btn btn-sign" value="Update">
                             </form>
                         </div>
                     </div>
