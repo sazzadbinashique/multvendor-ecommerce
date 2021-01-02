@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+
 
 class BackEndController extends Controller
 {
@@ -11,12 +13,6 @@ class BackEndController extends Controller
 
         return view('backend.index');
     }
-
-    public function dashboard(){
-
-        return view('merchant.dashboard');
-    }
-
 
     public function profile(){
 

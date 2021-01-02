@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Merchant;
 
+use Session;
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 
 class BrandController extends Controller
 {
@@ -14,7 +17,9 @@ class BrandController extends Controller
      */
     public function index()
     {
-        //
+        $brands = Brand::paginate(10);
+
+        return  view('admin.brand.index', compact('brands'));
     }
 
     /**
@@ -24,7 +29,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.brand.create');
     }
 
     /**
@@ -35,7 +40,17 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $brand = new Brand;
+        $str = strtolower($request->name);
+        $brand->name = $request->name;
+        $brand->alias = preg_replace('/\s+/', '-', $str);
+        $brand->status = $request->status;
+        $brand->save();
+
+        Session::flash('success', 'Brand has been created successfully ');
+
+        return redirect()->route('brands.index');
+
     }
 
     /**
@@ -57,7 +72,7 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        //
+        return  view('admin.brand.edit', compact('brand'));
     }
 
     /**
@@ -69,7 +84,15 @@ class BrandController extends Controller
      */
     public function update(Request $request, Brand $brand)
     {
-        //
+        $str = strtolower($request->name);
+        $brand->name = $request->name;
+        $brand->alias = preg_replace('/\s+/', '-', $str);
+        $brand->status = $request->status;
+        $brand->save();
+
+        Session::flash('success', 'Brand has been updated successfully ');
+
+        return redirect()->back();
     }
 
     /**
@@ -80,6 +103,10 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        //
+        $brand->delete();
+
+        Session::flash('success', 'Brand has been Deleted successfully ');
+
+        return redirect()->back();
     }
 }

@@ -13,7 +13,6 @@ class HomeController extends Controller
         $role = Auth::user()->role->name;
         $checkrole = explode(',', $role);
         if (in_array('Admin', $checkrole)) {
-
             return redirect()->route('admin.dashboard');
 
         }elseif(in_array('Merchant', $checkrole)){

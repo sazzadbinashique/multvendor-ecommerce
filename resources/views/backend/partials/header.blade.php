@@ -6,22 +6,25 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{route('merchant.dashboard')}}" class="nav-link">Panda Management</a>
+            <a href="{{(auth()->user()->role_id == 1)? route('admin.dashboard'): route('merchant.dashboard')}}" class="nav-link">Panda Management</a>
         </li>
     </ul>
 
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+        <li class="nav-item d-none bg-gradient-navy d-sm-inline-block">
+            <a href="{{url('/')}}" target="_blank" class="nav-link">Live Site</a>
+        </li>
         <li class="nav-item dropdown user user-menu">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                <img src="{{asset(auth()->user()->avatar)}}" class="user-image img-circle elevation-2 alt="User Image">
+                <img src="{{(!empty(auth()->user()->avatar))? asset(auth()->user()->avatar) : asset('adminlte/dist/img/avatar.png')}}" class="user-image img-circle elevation-2 alt="User-Image">
                 <span class="hidden-xs">{{auth()->user()->name}}</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <!-- User image -->
                 <li class="user-header bg-primary">
-                    <img src="{{asset(auth()->user()->avatar)}}" class="img-circle elevation-2" alt="User Image">
+                    <img src="{{(!empty(auth()->user()->avatar))? asset(auth()->user()->avatar) : asset('adminlte/dist/img/avatar.png')}}" class="img-circle elevation-2" alt="User Image">
                     <p>{{auth()->user()->name}}
                         <small>{{auth()->user()->created_at}}</small>
                     </p>

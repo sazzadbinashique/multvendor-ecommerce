@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>All Shop</h1>
+                        <h1>All brand</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Shop</li>
+                            <li class="breadcrumb-item active">brands</li>
                         </ol>
                     </div>
                 </div>
@@ -25,14 +25,23 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
+
                         <div class="card">
+                            @if(Session::has('success'))
+                                <div class="alert alert-success">
+                                    {{ Session::get('success') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
                             <div class="card-header">
                                 <h3 class="card-title float-right">
+                                    <a href="{{route('brands.create')}}" class="btn btn-success btn-group-sm">Add New</a>
                                 </h3>
                                 <div class="card-tools float-left">
                                     <div class="input-group">
-                                        <input type="text" name="table_search" class="form-control"
-                                               placeholder="Search">
+                                        <input type="text" name="table_search" class="form-control" placeholder="Search">
 
                                         <div class="input-group-append">
                                             <button type="submit" class="btn btn-default">
@@ -48,42 +57,43 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
-                                        <th>Image</th>
-                                        <th>Address</th>
+                                        <th>Alias</th>
                                         <th>Created</th>
                                         <th>Updated</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach( $shops  as $shop)
+                                    @foreach( $brands as $brand)
                                         <tr>
-                                            <td>{{$shop->id}}</td>
-                                            <td>{{$shop->shop_name}}</td>
-{{--                                            <td><a href="{{route('shops.edit', $shop->id)}}">{{$shop->shop_name}}</a></td>--}}
+                                            <td>{{$brand->id}}</td>
+                                            <td><a href="{{route('brands.edit', $brand->id)}}">{{$brand->name}}</a></td>
+                                            <td>{{$brand->alias}}</td>
+                                            <td>{{$brand->created_at}}</td>
+                                            <td>{{$brand->updated_at}}</td>
                                             <td>
-                                                <img src="{{asset($shop->logo)}}" alt="">
+                                                <span class="">{{($brand->status == 1)? 'Active': 'Inactive'}}</span>
                                             </td>
-                                            <td>{{$shop->address}}</td>
-                                            <td>{{$shop->created_at}}</td>
-                                            <td>{{$shop->updated_at}}</td>
-                                            @if(Auth::user()->role->name == 'Merchant')
+
+
                                             <td>
-                                                <form action="{{ route('shops.destroy', $shop->id) }}" method="post">
+                                                <form action="{{ route('brands.destroy', $brand->id) }}" method="post">
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}
                                                     <button class="btn btn-sm btn-danger">Delete</button>
                                                 </form>
                                             </td>
-                                            @endif
                                         </tr>
                                     @endforeach
                                     </tbody>
+
                                 </table>
                             </div>
                             <div class="card-footer clearfix">
-                                {{$shops->links()}}
+                                {{$brands->links()}}
                             </div>
+
                         </div>
                         <!-- /.card -->
                     </div>

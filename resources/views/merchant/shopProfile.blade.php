@@ -128,7 +128,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <div class="offset-sm-2 col-sm-10">
+                                                <div class="offset-sm-10 col-sm-2">
                                                     <button type="submit" class="btn btn-danger">Update</button>
                                                 </div>
                                             </div>

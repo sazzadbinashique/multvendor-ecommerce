@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>All Shop</h1>
+                        <h1>All Products</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Shop</li>
+                            <li class="breadcrumb-item active">Products</li>
                         </ol>
                     </div>
                 </div>
@@ -28,6 +28,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title float-right">
+                                    <a href="{{route('products.create')}}" class="btn btn-success btn-group-sm">Add New</a>
                                 </h3>
                                 <div class="card-tools float-left">
                                     <div class="input-group">
@@ -49,41 +50,42 @@
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>Image</th>
-                                        <th>Address</th>
+                                        <th>Price</th>
                                         <th>Created</th>
                                         <th>Updated</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach( $shops  as $shop)
+                                    @foreach( $products  as $product)
                                         <tr>
-                                            <td>{{$shop->id}}</td>
-                                            <td>{{$shop->shop_name}}</td>
-{{--                                            <td><a href="{{route('shops.edit', $shop->id)}}">{{$shop->shop_name}}</a></td>--}}
+                                            <td>{{$product->id}}</td>
+                                            <td><a href="{{route('products.edit', $product->id)}}">{{$product->name}}</a></td>
                                             <td>
-                                                <img src="{{asset($shop->logo)}}" alt="">
+                                                <img src="{{asset($product->image)}}" alt="Product-Image" style="width: 60px; height: 40px;">
                                             </td>
-                                            <td>{{$shop->address}}</td>
-                                            <td>{{$shop->created_at}}</td>
-                                            <td>{{$shop->updated_at}}</td>
-                                            @if(Auth::user()->role->name == 'Merchant')
+                                            <td>{{$product->price}}</td>
+                                            <td>{{$product->created_at}}</td>
+                                            <td>{{$product->updated_at}}</td>
                                             <td>
-                                                <form action="{{ route('shops.destroy', $shop->id) }}" method="post">
+                                                <form action="{{ route('products.destroy', $product->id) }}" method="post">
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}
                                                     <button class="btn btn-sm btn-danger">Delete</button>
                                                 </form>
                                             </td>
-                                            @endif
                                         </tr>
                                     @endforeach
                                     </tbody>
+
                                 </table>
                             </div>
                             <div class="card-footer clearfix">
-                                {{$shops->links()}}
+
+                                {{$products->links()}}
+
                             </div>
+
                         </div>
                         <!-- /.card -->
                     </div>

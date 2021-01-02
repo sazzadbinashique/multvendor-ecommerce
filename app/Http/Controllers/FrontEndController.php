@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use App\Models\Product;
+use App\Models\Slider;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,9 +17,11 @@ class FrontEndController extends Controller
         $products = Product::orderBy('id', 'asc')->limit(10)->get();
         $latestProducts = Product::orderBy('id', 'desc')->limit(10)->get();
         $categoryProducts = Product::orderBy('category_id')->get();
+        $sliders= Slider::where('status', 1)->orderBy('id', 'desc')->limit(3)->get();
+        $banners= Banner::where('status', 1)->where('position', 0)->orderBy('id', 'asc')->limit(3)->get();
+        $bannerLongs = Banner::where('status', 1)->where('position', 1)->orderBy('id', 'asc')->limit(2)->get();
 
-
-        return view('frontend.index', compact('products', 'latestProducts', 'categoryProducts'));
+        return view('frontend.index', compact('products', 'latestProducts', 'categoryProducts', 'sliders', 'banners','bannerLongs'));
     }
 
     public function profile(){
