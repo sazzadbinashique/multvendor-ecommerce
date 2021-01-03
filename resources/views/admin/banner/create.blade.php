@@ -44,13 +44,13 @@
                                     <div class="form-group row">
                                         <label for="title" class="col-sm-2 col-form-label">Title</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="title" class="form-control" id="title" placeholder="Name">
+                                            <input type="text" name="title" value="{{old('title')}}" class="form-control" id="title" placeholder="Name">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="sub_title" class="col-sm-2 col-form-label">Sub Title</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="sub_title" class="form-control" id="sub_title" placeholder="Name">
+                                            <input type="text" name="sub_title" value="{{old('sub_title')}}" class="form-control" id="sub_title" placeholder="Name">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -74,7 +74,7 @@
                                     <div class="form-group row">
                                         <label for="url" class="col-sm-2 col-form-label">URL </label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="url" class="form-control" id="url" placeholder="Name">
+                                            <input type="text" name="url" value="{{old('url')}}" class="form-control" id="url" placeholder="Name">
                                         </div>
                                     </div>
                                     <div class="form-group row">

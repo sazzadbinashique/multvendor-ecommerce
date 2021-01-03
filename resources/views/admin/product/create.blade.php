@@ -54,7 +54,7 @@
                                     <div class="form-group row">
                                         <label for="name" class="col-sm-2 col-form-label">Name</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="name" class="form-control" id="name" placeholder="Name">
+                                            <input type="text" name="name" value="{{old('name')}}" class="form-control" id="name" placeholder="Name">
                                         </div>
                                     </div>
 
@@ -70,14 +70,14 @@
                                     <div class="form-group row">
                                         <label for="price" class="col-sm-2 col-form-label">Price</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="price" class="form-control" id="price" placeholder="Price">
+                                            <input type="text" name="price" value="{{old('price')}}" class="form-control" id="price" placeholder="Price">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label for="description" class="col-sm-2 col-form-label">Description</label>
                                         <div class="col-sm-10">
-                                            <textarea class="form-control" name="description" id="" cols="10" rows="4"></textarea>
+                                            <textarea class="form-control" name="description"  id="description" cols="10" rows="4"></textarea>
                                         </div>
                                     </div>
 
