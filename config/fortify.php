@@ -134,20 +134,14 @@ return [
     'features' => [
         Features::registration(),
         Features::resetPasswords(),
-//         Features::emailVerification(),
-        Features::updateProfileInformation(),
+        Features::emailVerification(),
+      /*  Features::updateProfileInformation(),
         Features::updatePasswords(),
         Features::twoFactorAuthentication([
             'confirmPassword' => true,
-        ]),
+        ]),*/
 
-        Fortify::registerView(function (){
-            return view('auth.register');
-        }),
 
-        Fortify::loginView(function (){
-           return view('auth.login');
-        })
 
     ],
 

@@ -22,22 +22,22 @@ use \App\Http\Controllers\Admin\BackEndController;
 
 Route::get('redirectTo', [HomeController::class, 'index']);
 
-Route::get('/', [ FrontEndController::class, 'index']);
-Route::get('/shop', [ FrontEndController::class, 'shop'])->name('shop');
+Route::get('/', [ FrontEndController::class, 'index'])->middleware('verified');;
+Route::get('/shop', [ FrontEndController::class, 'shop'])->name('shop')->middleware('verified');;
 
 Route::get('/seller/register', [ MerchantController::class, 'registerView'])->name('seller.register');
 Route::post('/seller/createNewRegister', [ MerchantController::class, 'createNewRegister'])->name('seller.new.register');
 
 Route::get('/product/{alias}', [ FrontEndController::class, 'singleProduct'])->name('single.product');
 
-Route::get('/cart', [ShoppingController::class, 'cart'])->name('cart');
+Route::get('/cart', [ShoppingController::class, 'cart'])->name('cart')->middleware('verified');
 Route::post('/cart/add', [ShoppingController::class, 'add_to_cart'])->name('cart.add');
 Route::get('/cart/delete/{id}', [ShoppingController::class, 'cart_delete'])->name('cart.delete');
 Route::get('/cart/incr/{id}/{qty}', [ShoppingController::class, 'incr'])->name('cart.incr');
 Route::get('/cart/decr/{id}/{qty}', [ShoppingController::class, 'decr'])->name('cart.decr');
 Route::get('/cart/rapid/add/{id}', [ShoppingController::class, 'rapid_add'])->name('cart.rapid.add');
 
-Route::get('/cart/checkout', [CheckoutController::class, 'index'])->name('cart.checkout');
+Route::get('/cart/checkout', [CheckoutController::class, 'index'])->name('cart.checkout')->middleware('verified');;
 
 
 /*Admin Route*/
@@ -78,7 +78,7 @@ Route::group(['prefix'=>'merchant', 'middleware'=>['merchant'] ,'as'=>'merchant.
 });
 
 /*User Route*/
-Route::group(['middleware'=>[ 'user']], function (){
+Route::group(['middleware'=>[ 'auth', 'user', 'verified']], function (){
 
     Route::get('/dashboard', [ FrontEndController::class, 'index'])->name('frontend.dashboard');
     Route::get('/profile', [FrontEndController::class, 'profile'])->name('user.profile');

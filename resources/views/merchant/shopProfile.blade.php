@@ -76,10 +76,10 @@
                                 <ul class="nav nav-pills">
                                     <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Setting Shop</a></li>
                                 </ul>
-                            </div><!-- /.card-header -->
+                            </div>
                             <div class="card-body">
                                 <div class="tab-content">
-                                    <div class="tab-pane" id="settings">
+                                    <div class="active tab-pane" id="settings">
                                         <form action="{{route('merchant.update.shop.profile')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
                                             {{csrf_field()}}
                                             <div class="form-group row">
@@ -121,7 +121,7 @@
                                             <div class="form-group row">
                                                 <label for="logo" class="col-sm-2 col-form-label">Shop Logo</label>
                                                 <div class="col-sm-3">
-                                                    <img src="{{asset($shop->logo)}}" alt="shop-logo" class="img-responsive">
+                                                    <img src="{{asset($shop->logo)}}" alt="shop-logo" class="img-responsive" style="width: 60px; height: 50px;">
                                                 </div>
                                                 <div class="col-sm-7">
                                                     <input type="file" name="logo" class="form-control" id="logo">
