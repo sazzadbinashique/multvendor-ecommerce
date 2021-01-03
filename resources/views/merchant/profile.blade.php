@@ -106,7 +106,7 @@
                                                     <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="password">
                                                     @error('password')
                                                     <span class="invalid-feedback" role="alert">
-                                                        <strong class="bg-danger">{{ $message }}</strong>
+                                                        <strong class="text-danger">{{ $message }}</strong>
                                                     </span>
                                                     @enderror
                                                 </div>

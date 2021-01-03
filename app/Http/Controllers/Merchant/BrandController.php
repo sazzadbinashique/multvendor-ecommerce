@@ -40,6 +40,11 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name'      => 'required|string',
+            'status'   => 'required',
+        ]);
+
         $brand = new Brand;
         $str = strtolower($request->name);
         $brand->name = $request->name;
@@ -84,6 +89,11 @@ class BrandController extends Controller
      */
     public function update(Request $request, Brand $brand)
     {
+        $request->validate([
+            'name'      => 'required|string',
+            'status'   => 'required',
+        ]);
+
         $str = strtolower($request->name);
         $brand->name = $request->name;
         $brand->alias = preg_replace('/\s+/', '-', $str);

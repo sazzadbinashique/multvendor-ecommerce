@@ -40,6 +40,14 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title'      => 'required|string',
+            'product_title'  => 'required',
+            'subtitle'  => 'required',
+            'price'  => 'required',
+            'status'   => 'required',
+            'image'      => 'required|image',
+        ]);
         $slider = new Slider;
         $slider->title = $request->title;
         $slider->product_title = $request->product_title;
@@ -91,6 +99,14 @@ class SliderController extends Controller
      */
     public function update(Request $request, Slider $slider)
     {
+        $request->validate([
+            'title'      => 'required|string',
+            'product_title'  => 'required',
+            'subtitle'  => 'required',
+            'price'  => 'required',
+            'status'   => 'required',
+        ]);
+
         $slider->title = $request->title;
         $slider->product_title = $request->product_title;
         $slider->subtitle = $request->subtitle;

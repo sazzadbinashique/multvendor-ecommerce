@@ -24,10 +24,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-
                     <div class="card card-info">
                         @if($errors->count() > 0)
-                            <ul class="list-group">
+                            <ul class="list-group notification-object">
                                 @foreach($errors->all() as $error)
                                     <li class="list-group-item text-danger">
                                         {{ $error }}
@@ -44,19 +43,19 @@
                                 <div class="form-group row">
                                     <label for="name" class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="name" class="form-control" id="name" placeholder="Name">
+                                        <input type="text" name="name" class="form-control" value="{{old('name')}}" id="name" placeholder="Name">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="email" class="col-sm-2 col-form-label">Email</label>
                                     <div class="col-sm-10">
-                                        <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+                                        <input type="email" name="email" class="form-control" id="email" value="{{old('email')}}" placeholder="Email">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="password" class="col-sm-2 col-form-label">Password</label>
                                     <div class="col-sm-10">
-                                        <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                                        <input type="password" name="password" value="{{old('password')}}" class="form-control" id="password" placeholder="Password">
                                     </div>
                                 </div>
                             </div>

@@ -606,3 +606,10 @@
 		MERCADO_JS.onResize();
 	});
 })(window.Zepto || window.jQuery, window, document);
+
+/*notification hide */
+
+$(".alert-success").delay(3000).fadeOut(300);
+$(".alert-success").click(function () {
+    $(".alert-success").hide();
+});

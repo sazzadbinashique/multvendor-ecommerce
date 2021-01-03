@@ -32,7 +32,7 @@ $statuses = [1 => 'Active', 0 => 'Disabled'];
 
                         <div class="card card-info">
                             @if($errors->count() > 0)
-                                <ul class="list-group">
+                                <ul class="list-group notification-object">
                                     @foreach($errors->all() as $error)
                                         <li class="list-group-item text-danger">
                                             {{ $error }}

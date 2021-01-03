@@ -43,7 +43,7 @@ class MerchantController extends Controller
             'phone'    => 'required',
             'address'   => 'required',
         ]);
-
+//        $user = User::firstOrNew(['email' =>  request('email')]);
         $user = new User;
         $user->name = $request->name;
         $user->role_id = 2;
@@ -65,6 +65,7 @@ class MerchantController extends Controller
 
         $shop->save();
 
+        Session::flash('success', 'Merchant Shop has been Created Successfully');
 
         return redirect()->route('login');
     }

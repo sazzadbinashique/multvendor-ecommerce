@@ -43,3 +43,16 @@ $(function () {
         }
     });
 });
+
+
+/*notification hide */
+
+$(".alert-success").delay(3000).fadeOut(300);
+$(".alert-success").click(function () {
+    $(".alert-success").hide();
+});
+
+$(".notification-object").delay(3000).fadeOut(300);
+$(".notification-object").click(function () {
+    $(".notification-object").hide();
+});

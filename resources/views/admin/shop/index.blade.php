@@ -62,7 +62,7 @@
                                             <td>{{$shop->shop_name}}</td>
 {{--                                            <td><a href="{{route('shops.edit', $shop->id)}}">{{$shop->shop_name}}</a></td>--}}
                                             <td>
-                                                <img src="{{asset($shop->logo)}}" alt="">
+                                                <img src="{{asset($shop->logo)}}" alt="shop-logo" style="width: 50px; height: 40px;">
                                             </td>
                                             <td>{{$shop->address}}</td>
                                             <td>{{$shop->created_at}}</td>

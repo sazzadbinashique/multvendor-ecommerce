@@ -40,6 +40,14 @@ $statuses = [1 => 'Active', 0 => 'Disabled'];
                                     @endforeach
                                 </ul>
                             @endif
+                            @if(Session::has('success'))
+                                <div class="alert alert-success">
+                                    {{ Session::get('success') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
                             <div class="card-header">
                                 <h3 class="card-title">New Brand Create</h3>
                             </div>

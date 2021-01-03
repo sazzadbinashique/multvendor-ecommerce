@@ -40,6 +40,14 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title'      => 'required|string',
+            'sub_title'  => 'required',
+            'position' => 'required',
+            'status'   => 'required',
+            'image'      => 'required|image',
+        ]);
+
         $banner = new Banner;
         $banner->title = $request->title;
         $banner->sub_title = $request->sub_title;
@@ -88,6 +96,13 @@ class BannerController extends Controller
      */
     public function update(Request $request, Banner $banner)
     {
+        $request->validate([
+            'title'      => 'required|string',
+            'sub_title'  => 'required',
+            'position' => 'required',
+            'status'   => 'required',
+        ]);
+
         $banner->title = $request->title;
         $banner->sub_title = $request->sub_title;
         $banner->position = $request->position;

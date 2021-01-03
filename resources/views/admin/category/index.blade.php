@@ -70,7 +70,7 @@
                                             <td>{{$category->id}}</td>
                                             <td><a href="{{route('admin.categories.edit', $category->id)}}">{{$category->name}}</a></td>
                                             <td>
-                                                <img src="{{asset($category->image)}}" alt="" class="img-responsive" style="width: 60px; height: 50px;">
+                                                <img src="{{asset($category->image)}}" alt="category-image" class="img-responsive" style="width: 60px; height: 50px;">
                                             </td>
                                             <td>{{$category->created_at}}</td>
                                             <td>{{$category->updated_at}}</td>

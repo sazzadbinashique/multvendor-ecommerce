@@ -3,7 +3,6 @@
 @section('content')
 
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -17,15 +16,13 @@
                         </ol>
                     </div>
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
 
-        <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-
                         <div class="card">
                             @if(Session::has('success'))
                                 <div class="alert alert-success">
@@ -65,36 +62,34 @@
                                     </thead>
                                     <tbody>
                                     @foreach( $users as $user)
-                                    <tr>
-                                        <td>{{$user->id}}</td>
-                                        <td><a href="{{route('admin.users.edit', $user->id)}}">{{$user->name}}</a></td>
-                                        <td>{{$user->email}}</td>
-                                        <td>{{$user->created_at}}</td>
-                                        <td>{{$user->updated_at}}</td>
-
-                                        <td>
-                                            <form action="{{ route('admin.users.destroy', $user->id) }}" method="post">
-                                                {{ csrf_field() }}
-                                                {{ method_field('DELETE') }}
-                                                <button class="btn btn-sm btn-danger">Delete</button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td>{{$user->id}}</td>
+                                            <td><a href="{{route('admin.users.edit', $user->id)}}">{{$user->name}}</a></td>
+                                            <td>
+                                                <img src="{{asset($user->avatar)}}" alt="user-image" class="img-responsive" style="width: 50px; height: 40px;">
+                                            </td>
+                                            <td>{{$user->email}}</td>
+                                            <td>{{$user->created_at}}</td>
+                                            <td>{{$user->updated_at}}</td>
+                                            <td>
+                                                <form action="{{ route('admin.users.destroy', $user->id) }}" method="post">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('DELETE') }}
+                                                    <button class="btn btn-sm btn-danger">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
                                     @endforeach
                                     </tbody>
-
                                 </table>
                             </div>
                             <div class="card-footer clearfix">
                                 {{$users->links()}}
                             </div>
-
                         </div>
-                        <!-- /.card -->
                     </div>
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
-        <!-- /.content -->
     </div>
 @endsection

@@ -20,32 +20,32 @@
                                </fieldset>
                                <fieldset class="wrap-input">
                                    <label for="frm-reg-lname">Name*</label>
-                                   <input type="text" id="name" name="name" class="@error('name') is-invalid @enderror" placeholder="Last name*">
+                                   <input type="text" id="name" name="name" value="{{ old('name') }}" class="@error('name') is-invalid @enderror" placeholder="Last name*">
                                    @error('name')
                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong class="text-danger">{{ $message }}</strong>
                                     </span>
                                    @enderror
                                </fieldset>
                                <fieldset class="wrap-input">
                                    <label for="frm-reg-email">Email Address*</label>
-                                   <input type="email" id="email" name="email" class="@error('email') is-invalid @enderror" placeholder="Email address">
+                                   <input type="email" id="email" name="email" value="{{ old('email') }}" class="@error('email') is-invalid @enderror" placeholder="Email address">
                                    @error('email')
                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong class="text-danger">{{ $message }}</strong>
                                     </span>
                                    @enderror
                                </fieldset>
-                               <fieldset class="wrap-input item-width-in-half left-item ">
+                               <fieldset class="wrap-input ">
                                    <label for="password">Password *</label>
-                                   <input type="password" id="password" name="password" class="@error('password') is-invalid @enderror" placeholder="Password">
+                                   <input type="password" id="password" name="password"  value="{{ old('password') }}" class="@error('password') is-invalid @enderror" placeholder="Password">
                                    @error('password')
                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong class="text-danger">{{ $message }}</strong>
                                     </span>
                                    @enderror
                                </fieldset>
-                               <fieldset class="wrap-input item-width-in-half ">
+                               <fieldset class="wrap-input ">
                                    <label for="password_confirmation">Confirm Password *</label>
                                    <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password">
                                </fieldset>

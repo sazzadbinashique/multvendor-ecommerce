@@ -34,6 +34,14 @@
                                     @endforeach
                                 </ul>
                             @endif
+                            @if(Session::has('success'))
+                                <div class="alert alert-success">
+                                    {{ Session::get('success') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
                             <div class="card-header">
                                 <h3 class="card-title">Update Product</h3>
                             </div>
@@ -70,7 +78,7 @@
                                     <div class="form-group row">
                                         <label for="price" class="col-sm-2 col-form-label">Price</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="price" {{$product->price}} class="form-control" id="price" placeholder="Price">
+                                            <input type="text" name="price" value="{{$product->price}}" class="form-control" id="price" placeholder="Price">
                                         </div>
                                     </div>
 

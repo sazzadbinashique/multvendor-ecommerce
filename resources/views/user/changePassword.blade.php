@@ -48,16 +48,16 @@
                                 <fieldset class="wrap-title">
                                     <h3 class="form-title">Change Password</h3>
                                 </fieldset>
-                                <fieldset class="wrap-input item-width-in-half left-item ">
+                                <fieldset class="wrap-input ">
                                     <label for="password">Password *</label>
                                     <input type="password" id="password" name="password" class="@error('password') is-invalid @enderror" placeholder="Password">
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong class="bg-danger">{{ $message }}</strong>
+                                        <strong class="text-danger">{{ $message }}</strong>
                                     </span>
                                     @enderror
                                 </fieldset>
-                                <fieldset class="wrap-input item-width-in-half ">
+                                <fieldset class="wrap-input ">
                                     <label for="password_confirmation">Confirm Password *</label>
                                     <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password">
                                 </fieldset>

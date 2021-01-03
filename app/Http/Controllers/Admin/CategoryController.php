@@ -41,6 +41,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name'      => 'required|string',
+            'description'  => 'required',
+            'status'   => 'required',
+            'image'      => 'required|image',
+        ]);
+
         $category = new Category;
         $str = strtolower($request->name);
 
@@ -94,6 +101,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        $request->validate([
+            'name'      => 'required|string',
+            'description'  => 'required',
+            'status'   => 'required',
+        ]);
+
         $str = strtolower($request->name);
 
         $category->name = $request->name;

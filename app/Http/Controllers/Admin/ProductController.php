@@ -45,6 +45,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name'      => 'required|string',
+            'category_id'  => 'required',
+            'price' => 'required',
+            'description'   => 'required',
+            'image'      => 'required|image',
+        ]);
+
+
         $product = new Product;
         $str = strtolower($request->name);
 
@@ -99,6 +108,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+
+        $request->validate([
+            'name'      => 'required|string',
+            'category_id'  => 'required',
+            'price' => 'required',
+            'description'   => 'required',
+        ]);
         $str = strtolower($request->name);
 
         $product->name = $request->name;
