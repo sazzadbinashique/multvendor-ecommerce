@@ -22,7 +22,7 @@ use \App\Http\Controllers\Admin\BackEndController;
 
 Route::get('redirectTo', [HomeController::class, 'index']);
 
-Route::get('/', [ FrontEndController::class, 'index'])->middleware('verified');;
+Route::get('/', [ FrontEndController::class, 'index']);
 Route::get('/shop', [ FrontEndController::class, 'shop'])->name('shop')->middleware('verified');;
 
 Route::get('/seller/register', [ MerchantController::class, 'registerView'])->name('seller.register');

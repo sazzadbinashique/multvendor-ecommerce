@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Actions\Fortify\PasswordValidationRules;
+use File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Session;
 use App\Models\Banner;
 use App\Models\Product;
@@ -20,7 +22,7 @@ class FrontEndController extends Controller
         $products = Product::orderBy('id', 'asc')->limit(10)->get();
         $latestProducts = Product::orderBy('id', 'desc')->limit(10)->get();
         $categoryProducts = Product::orderBy('category_id')->get();
-        $sliders= Slider::where('status', 1)->orderBy('id', 'desc')->limit(3)->get();
+        $sliders= Slider::where('status', 1)->orderBy('id', 'desc')->limit(4)->get();
         $banners= Banner::where('status', 1)->where('position', 0)->orderBy('id', 'asc')->limit(3)->get();
         $bannerLongs = Banner::where('status', 1)->where('position', 1)->orderBy('id', 'asc')->limit(2)->get();
 
@@ -47,15 +49,21 @@ class FrontEndController extends Controller
             'email'     => 'required',
         ]);
         $user = Auth::user();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $logo_image = $request->avatar;
-        if (!empty($logo_image)){
+
+        if(request()->hasFile('avatar') && request('avatar') != ''){
+            $imagePath = public_path($user->avatar);
+
+            if(File::exists($imagePath)) {
+                File::delete($imagePath);
+               // unlink($imagePath);
+            }
+            $logo_image = $request->avatar;
             $logo_image_new_name = time() . $logo_image->getClientOriginalName();
             $logo_image->move('uploads/users', $logo_image_new_name);
             $user->avatar = 'uploads/users/' . $logo_image_new_name;
-
         }
+        $user->name = $request->name;
+        $user->email = $request->email;
         $user->save();
 
         Session::flash('success', 'User has been Updated Successfully');
