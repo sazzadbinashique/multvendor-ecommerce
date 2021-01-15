@@ -1788,6 +1788,17 @@ li.menu-item .nav-label.sale-label::before{
     width: 100%;
     margin-top: 5px;
 }
+.product .product-info .shop-name span,
+.product-style-2 .product-info .shop-name span{
+    font-size: 13px;
+    line-height: 18px;
+    color: #222222;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    margin-top: 5px;
+}
+
 .product .product-info .product-rating,
 .wrap-product-detail .detail-info .product-rating{
     display: inline-block;

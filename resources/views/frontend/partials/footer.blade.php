@@ -239,10 +239,10 @@
                 <div class="coppy-right-item item-right">
                     <div class="wrap-nav horizontal-nav">
                         <ul>
-                            <li class="menu-item"><a href="about-us.html" class="link-term">About us</a></li>
-                            <li class="menu-item"><a href="privacy-policy.html" class="link-term">Privacy Policy</a></li>
-                            <li class="menu-item"><a href="terms-conditions.html" class="link-term">Terms & Conditions</a></li>
-                            <li class="menu-item"><a href="return-policy.html" class="link-term">Return Policy</a></li>
+                            <li class="menu-item"><a href="{{route('about')}}" class="link-term">About us</a></li>
+                            <li class="menu-item"><a href="{{route('privacy')}}" class="link-term">Privacy Policy</a></li>
+                            <li class="menu-item"><a href="{{route('term.condition')}}" class="link-term">Terms & Conditions</a></li>
+                            <li class="menu-item"><a href="{{route('return.policy')}}" class="link-term">Return Policy</a></li>
                         </ul>
                     </div>
                 </div>

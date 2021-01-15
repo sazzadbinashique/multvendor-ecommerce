@@ -23,14 +23,25 @@ use \App\Http\Controllers\Admin\BackEndController;
 Route::get('redirectTo', [HomeController::class, 'index']);
 
 Route::get('/', [ FrontEndController::class, 'index']);
-Route::get('/shop', [ FrontEndController::class, 'shop'])->name('shop')->middleware('verified');;
+
+Route::get('/about-us', [ FrontEndController::class, 'aboutUs'])->name('about');
+Route::get('/privacy-policy', [ FrontEndController::class, 'privacyPolicy'])->name('privacy');
+Route::get('/terms-and-condition', [ FrontEndController::class, 'termAndCondition'])->name('term.condition');
+Route::get('/return-policy', [ FrontEndController::class, 'returnPolicy'])->name('return.policy');
+Route::get('/contact-us', [ FrontEndController::class, 'contactUs'])->name('contact');
+
+Route::get('/categories', [ FrontEndController::class, 'shopCategory'])->name('shop.category');
+Route::get('/shops', [ FrontEndController::class, 'allShop'])->name('shops');
+Route::get('/shop/{alias}', [ FrontEndController::class, 'shopByStore'])->name('shop.store');
+Route::get('/brands', [ FrontEndController::class, 'allBrand'])->name('brands');
+Route::get('/brand/{alias}', [ FrontEndController::class, 'brandByStore'])->name('brand.store');
 
 Route::get('/seller/register', [ MerchantController::class, 'registerView'])->name('seller.register');
 Route::post('/seller/createNewRegister', [ MerchantController::class, 'createNewRegister'])->name('seller.new.register');
 
 Route::get('/product/{alias}', [ FrontEndController::class, 'singleProduct'])->name('single.product');
 
-Route::get('/cart', [ShoppingController::class, 'cart'])->name('cart')->middleware('verified');
+Route::get('/cart', [ShoppingController::class, 'cart'])->name('cart');
 Route::post('/cart/add', [ShoppingController::class, 'add_to_cart'])->name('cart.add');
 Route::get('/cart/delete/{id}', [ShoppingController::class, 'cart_delete'])->name('cart.delete');
 Route::get('/cart/incr/{id}/{qty}', [ShoppingController::class, 'incr'])->name('cart.incr');
@@ -69,7 +80,7 @@ Route::group(['prefix'=>'merchant', 'middleware'=>['merchant'] ,'as'=>'merchant.
     Route::get('/profile', [ MerchantController::class, 'profile'])->name('profile');
     Route::post('/update/profile', [MerchantController::class, 'updateProfile'])->name('update.profile');
     Route::get('/shop/profile', [ MerchantController::class, 'shopProfile'])->name('shop.profile');
-    Route::post('/update/shop/profile', [ MerchantController::class, 'updateProfile'])->name('update.shop.profile');
+    Route::post('/update/shop/profile', [ MerchantController::class, 'shopUpdateProfile'])->name('update.shop.profile');
     Route::post('/update/password/', [MerchantController::class, 'updatePassword'])->name('updatePassword');
 
     Route::resource('brands', App\Http\Controllers\Merchant\BrandController::class);

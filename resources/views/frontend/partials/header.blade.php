@@ -140,13 +140,13 @@
                                 <a href="{{url('/')}}" class="link-term mercado-item-title"><i class="fa fa-home" aria-hidden="true"></i></a>
                             </li>
                             <li class="menu-item">
-                                <a href="#" class="link-term mercado-item-title">All Category</a>
+                                <a href="{{route('shop.category')}}" class="link-term mercado-item-title">All Category</a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{route('shop')}}" class="link-term mercado-item-title">All Shop</a>
+                                <a href="{{route('shops')}}" class="link-term mercado-item-title">All Shop</a>
                             </li>
                             <li class="menu-item">
-                                <a href="#" class="link-term mercado-item-title">All Band</a>
+                                <a href="{{route('brands')}}" class="link-term mercado-item-title">All Band</a>
                             </li>
                             <li class="menu-item">
                                 <a href="{{route('cart')}}" class="link-term mercado-item-title">Cart</a>
@@ -155,7 +155,7 @@
                                 <a href="{{route('cart.checkout')}}" class="link-term mercado-item-title">Checkout</a>
                             </li>
                             <li class="menu-item">
-                                <a href="#" class="link-term mercado-item-title">Contact Us</a>
+                                <a href="{{route('contact')}}" class="link-term mercado-item-title">Contact Us</a>
                             </li>
                         </ul>
                     </div>

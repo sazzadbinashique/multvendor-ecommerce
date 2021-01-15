@@ -233,9 +233,62 @@
                             </div>
                         </div>
 
+
                     </div>
                 </div>
             </div>
+
+        </div>
+        <!--Shop by Store -->
+        <div class="wrap-show-advance-info-box style-1 box-in-site">
+            <h3 class="title-box">Shop by Store</h3>
+            <div class="wrap-products">
+                <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-loop="false" data-nav="true" data-dots="false" data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"3"},"1200":{"items":"5"}}' >
+
+                    @foreach($shops as $shop)
+                    <div class="product product-style-2 equal-elem ">
+                        <div class="product-thumnail">
+                            <a href="#" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
+                                <figure><img src="{{asset($shop->logo)}}" width="800" height="800" alt="shop-logo"></figure>
+                            </a>
+                            {{--<div class="group-flash">
+                                <span class="flash-item new-label">{{$shop->shop_name}}</span>
+                            </div>--}}
+                        </div>
+                        <div class="product-info">
+                            <a href="#" class="shop-name"><span>{{$shop->shop_name}}</span></a>
+                        </div>
+                    </div>
+                    @endforeach
+
+                </div>
+            </div><!--End wrap-products-->
+        </div>
+
+        <!--Brand by Store -->
+        <div class="wrap-show-advance-info-box style-1 box-in-site">
+            <h3 class="title-box">Brand by Store</h3>
+            <div class="wrap-products">
+                <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-loop="false" data-nav="true" data-dots="false" data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"3"},"1200":{"items":"5"}}' >
+
+                    @foreach($shops as $shop)
+                        <div class="product product-style-2 equal-elem ">
+                            <div class="product-thumnail">
+                                <a href="#" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
+                                    <figure><img src="{{asset($shop->logo)}}" width="800" height="800" alt="shop-logo"></figure>
+                                </a>
+                                {{--<div class="group-flash">
+                                    <span class="flash-item new-label">{{$shop->shop_name}}</span>
+                                </div>--}}
+                            </div>
+                            <div class="product-info">
+                                <a href="#" class="shop-name"><span>{{$shop->shop_name}}</span></a>
+                            </div>
+                        </div>
+                    @endforeach
+
+                </div>
+            </div><!--End wrap-products-->
         </div>
 
     </div>

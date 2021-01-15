@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Actions\Fortify\PasswordValidationRules;
+use App\Models\Brand;
+use App\Models\Shop;
 use File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -25,14 +27,56 @@ class FrontEndController extends Controller
         $sliders= Slider::where('status', 1)->orderBy('id', 'desc')->limit(4)->get();
         $banners= Banner::where('status', 1)->where('position', 0)->orderBy('id', 'asc')->limit(3)->get();
         $bannerLongs = Banner::where('status', 1)->where('position', 1)->orderBy('id', 'asc')->limit(2)->get();
+        $shops = Shop::orderBy('id', 'asc')->limit(10)->get();
+//        $shops = Shop::orderBy('id', 'asc')->limit(10)->get();
 
-        return view('frontend.index', compact('products', 'latestProducts', 'categoryProducts', 'sliders', 'banners','bannerLongs'));
+        return view('frontend.index', compact('products', 'latestProducts', 'categoryProducts', 'sliders', 'banners','bannerLongs', 'shops'));
     }
 
 
-    public function shop(){
+    public function aboutUs(){
+
+        return view('frontend.about');
+    }
+    public function privacyPolicy(){
+
+        return view('frontend.privacy');
+    }
+    public function termAndCondition(){
+
+        return view('frontend.term');
+    }
+    public function returnPolicy(){
+
+        return view('frontend.policy');
+    }
+
+    public function contactUs(){
+        return view('frontend.contact');
+    }
+
+
+    public function shopCategory(){
+
+        return view('frontend.categoryProduct');
+    }
+
+    public function allShop(){
+        $shops= Shop::all();
+        return view('frontend.shops', compact('shops'));
+    }
+    public function allBrand(){
+        $brands= Brand::all();
+        return view('frontend.brands', compact('brands'));
+    }
+
+    public function shopByStore(){
 
         return view('frontend.shop');
+    }
+    public function brandByStore(){
+
+        return view('frontend.brand');
     }
 
     public function profile(){

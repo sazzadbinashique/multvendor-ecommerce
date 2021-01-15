@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Merchant;
 
-
+use File;
 use Session;
 use App\Models\Brand;
 use App\Models\Category;
@@ -127,5 +127,42 @@ class MerchantController extends Controller
         Session::flash('success', 'Merchant password has been Updated Successfully');
 
         return redirect()->back();
+    }
+
+
+    public function shopUpdateProfile(Request  $request){
+
+//        dd($request->all());
+        $request->validate([
+            'shop_name'      => 'required|string',
+            'licence'      => 'required',
+            'phone'      => 'required',
+            'address'      => 'required',
+        ]);
+        $user = Auth::user();
+        $shop = Shop::where('user_id', $user->id)->first();
+
+        if(request()->hasFile('logo') && request('logo') != ''){
+            $imagePath = public_path($shop->logo);
+
+            if(File::exists($imagePath)) {
+                File::delete($imagePath);
+//                 unlink($imagePath);
+            }
+            $logo_image = $request->logo;
+            $logo_image_new_name = time() . $logo_image->getClientOriginalName();
+            $logo_image->move('uploads/shops', $logo_image_new_name);
+            $shop->logo = 'uploads/shops/' . $logo_image_new_name;
+        }
+        $shop->shop_name = $request->shop_name;
+        $shop->licence = $request->licence;
+        $shop->phone = $request->phone;
+        $shop->address = $request->address;
+        $shop->save();
+
+        Session::flash('success', 'Merchant shop has been Updated Successfully');
+
+        return redirect()->back();
+
     }
 }

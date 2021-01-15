@@ -6,7 +6,7 @@
         <div class="wrap-breadcrumb">
             <ul>
                 <li class="item-link"><a href="#" class="link">home</a></li>
-                <li class="item-link"><span>shop_name</span></li>
+                <li class="item-link"><span>Brand_name</span></li>
             </ul>
         </div>
         <div class="row">
@@ -211,7 +211,7 @@
                     <div class="widget-content">
                         <ul class="list-category">
                             <li class="category-item">
-                                <a href="#" class="cate-link">Shop Name</a>
+                                <a href="#" class="cate-link">Brand Name</a>
                                 <span>dfsdf</span>
                             </li>
                             <li class="category-item">

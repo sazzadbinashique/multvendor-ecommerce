@@ -57,7 +57,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
-                                        <th>Alias</th>
+                                        <th>Logo</th>
                                         <th>Created</th>
                                         <th>Updated</th>
                                         <th>Status</th>
@@ -69,7 +69,9 @@
                                         <tr>
                                             <td>{{$brand->id}}</td>
                                             <td><a href="{{route('merchant.brands.edit', $brand->id)}}">{{$brand->name}}</a></td>
-                                            <td>{{$brand->alias}}</td>
+                                            <td>
+                                                <img src="{{asset($brand->logo)}}" alt="brand-logo" style="width: 60px; height: 40px;">
+                                            </td>
                                             <td>{{$brand->created_at}}</td>
                                             <td>{{$brand->updated_at}}</td>
                                             <td>

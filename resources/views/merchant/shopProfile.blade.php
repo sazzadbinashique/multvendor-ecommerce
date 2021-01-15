@@ -72,6 +72,14 @@
                     <!-- /.col -->
                     <div class="col-md-9">
                         <div class="card">
+                            @if(Session::has('success'))
+                                <div class="alert alert-success">
+                                    {{ Session::get('success') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills">
                                     <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Setting Shop</a></li>
@@ -85,19 +93,19 @@
                                             <div class="form-group row">
                                                 <label for="shop_name" class="col-sm-2 col-form-label">Shop Name</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="shop_name" value="{{$shop->shop_name}}" placeholder="Name">
+                                                    <input type="text" class="form-control" name="shop_name" id="shop_name" value="{{$shop->shop_name}}" placeholder="Name">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="email"  class="col-sm-2 col-form-label">Email</label>
                                                 <div class="col-sm-10">
-                                                    <input type="email" class="form-control" id="email" name="email" value="{{$shop->user->email}}" placeholder="Email">
+                                                    <input disabled type="email" class="form-control" id="email" name="email" value="{{$shop->user->email}}" placeholder="Email">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="name" class="col-sm-2 col-form-label">Merchant Name</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="shop_name" name="name" value="{{$shop->user->name}}" placeholder="Merchant Name">
+                                                    <input disabled type="text" class="form-control" id="name" name="name" value="{{$shop->user->name}}" placeholder="Merchant Name">
                                                 </div>
                                             </div>
                                             <div class="form-group row">

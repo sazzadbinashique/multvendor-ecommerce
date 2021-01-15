@@ -48,6 +48,15 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label for="logo" class="col-sm-2 col-form-label">Product Image</label>
+                                        <div class="col-sm-3">
+                                            <img src="" alt="brand-logo" class="img-responsive" style="width: 60px; height: 50px">
+                                        </div>
+                                        <div class="col-sm-7">
+                                            <input type="file" name="logo" class="form-control" id="logo">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label for="email" class="col-sm-2 col-form-label">Status</label>
                                         <div class="col-sm-10">
                                             <select name="status" class="form-control">
