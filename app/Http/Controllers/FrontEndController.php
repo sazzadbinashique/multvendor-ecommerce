@@ -142,4 +142,9 @@ class FrontEndController extends Controller
 
         return view('frontend.single', compact('product'));
     }
+
+    public function thankYou(){
+
+        return view('frontend.thanks');
+    }
 }

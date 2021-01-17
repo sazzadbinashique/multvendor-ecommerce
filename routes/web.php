@@ -48,7 +48,10 @@ Route::get('/cart/incr/{id}/{qty}', [ShoppingController::class, 'incr'])->name('
 Route::get('/cart/decr/{id}/{qty}', [ShoppingController::class, 'decr'])->name('cart.decr');
 Route::get('/cart/rapid/add/{id}', [ShoppingController::class, 'rapid_add'])->name('cart.rapid.add');
 
-Route::get('/cart/checkout', [CheckoutController::class, 'index'])->name('cart.checkout')->middleware('verified');;
+Route::get('/cart/checkout', [CheckoutController::class, 'index'])->name('cart.checkout');
+
+Route::post('/order', [\App\Http\Controllers\OrderController::class, 'orderPlace'])->name('order.place');
+Route::get('/thanks', [FrontEndController::class, 'thankYou'])->name('thank.you');
 
 
 /*Admin Route*/
@@ -96,6 +99,7 @@ Route::group(['middleware'=>[ 'auth', 'user', 'verified']], function (){
     Route::post('/update/profile', [FrontEndController::class, 'updateProfile'])->name('user.updateProfile');
     Route::get('/change/password', [FrontEndController::class, 'changePassword'])->name('user.changePassword');
     Route::post('/update/password/', [FrontEndController::class, 'updatePassword'])->name('user.updatePassword');
+
 });
 
 

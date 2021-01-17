@@ -92,11 +92,11 @@
                     <div class="wrap-icon right-section">
                         <div class="wrap-icon-section wishlist">
                             <a href="#" class="link-direction">
-                                <i class="fa fa-heart" aria-hidden="true"></i>
+                                {{--<i class="fa fa-heart" aria-hidden="true"></i>
                                 <div class="left-info">
                                     <span class="index">0 item</span>
                                     <span class="title">Wishlist</span>
-                                </div>
+                                </div>--}}
                             </a>
                         </div>
                         <div class="wrap-icon-section minicart">
@@ -121,7 +121,7 @@
             </div>
 
             <div class="nav-section header-sticky">
-                <div class="header-nav-section">
+               {{-- <div class="header-nav-section">
                     <div class="container">
                         <ul class="nav menu-nav clone-main-menu" id="mercado_haead_menu" data-menuname="Sale Info" >
                             <li class="menu-item"><a href="#" class="link-term">Weekly Featured</a><span class="nav-label hot-label">hot</span></li>
@@ -131,7 +131,7 @@
                             <li class="menu-item"><a href="#" class="link-term">Top rated items</a><span class="nav-label hot-label">hot</span></li>
                         </ul>
                     </div>
-                </div>
+                </div>--}}
 
                 <div class="primary-nav-section">
                     <div class="container">

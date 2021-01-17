@@ -461,7 +461,7 @@ input,textarea{
 	display: inline-block;
 	border: 2px solid;
 	position: relative;
-	max-width: 522px;
+	max-width: 600px;
 	width: 100%;
 }
 .header.fill-color .center-section .wrap-search-form{
@@ -583,7 +583,8 @@ input,textarea{
 	width: 182px;
 }
 .header .main-info-area .right-section{
-	width: 280px;
+	/*width: 280px;*/
+	width: 180px;
 }
 .main-info-area .right-section .wrap-icon-section{
 	display: inline-block;
@@ -4858,6 +4859,7 @@ table.shop_attributes tbody{
 }
 .wrap-address-billing .row-in-form input[type=email],
 .wrap-address-billing .row-in-form input[type=text],
+.wrap-address-billing .row-in-form input[type=password],
 .wrap-address-billing .row-in-form input[type=number]{
     font-size: 13px;
     line-height: 19px;
