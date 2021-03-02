@@ -28,9 +28,9 @@ class FrontEndController extends Controller
         $banners= Banner::where('status', 1)->where('position', 0)->orderBy('id', 'asc')->limit(3)->get();
         $bannerLongs = Banner::where('status', 1)->where('position', 1)->orderBy('id', 'asc')->limit(2)->get();
         $shops = Shop::orderBy('id', 'asc')->limit(10)->get();
-//        $shops = Shop::orderBy('id', 'asc')->limit(10)->get();
+        $brands = Brand::orderBy('id', 'asc')->limit(10)->get();
 
-        return view('frontend.index', compact('products', 'latestProducts', 'categoryProducts', 'sliders', 'banners','bannerLongs', 'shops'));
+        return view('frontend.index', compact('products', 'latestProducts', 'categoryProducts', 'sliders', 'banners','bannerLongs', 'shops', 'brands'));
     }
 
 

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\HomeController;
 use \App\Http\Controllers\FrontEndController;
 use \App\Http\Controllers\Admin\BackEndController;
+use \App\Http\Controllers\SslCommerzPaymentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +24,22 @@ use \App\Http\Controllers\Admin\BackEndController;
 Route::get('redirectTo', [HomeController::class, 'index']);
 
 Route::get('/', [ FrontEndController::class, 'index']);
+
+
+// SSLCOMMERZ Start
+Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+
+Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END
+
 
 Route::get('/about-us', [ FrontEndController::class, 'aboutUs'])->name('about');
 Route::get('/privacy-policy', [ FrontEndController::class, 'privacyPolicy'])->name('privacy');
@@ -54,6 +71,10 @@ Route::post('/order', [\App\Http\Controllers\OrderController::class, 'orderPlace
 Route::get('/thanks', [FrontEndController::class, 'thankYou'])->name('thank.you');
 
 
+
+
+
+
 /*Admin Route*/
 
 Route::group(['prefix'=>'admin', 'middleware'=>['auth', 'admin'], 'as'=>'admin.'], function (){
@@ -70,8 +91,6 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth', 'admin'], 'as'=>'admin.'
     Route::resource('products', App\Http\Controllers\Admin\ProductController::class);
     Route::resource('sliders', App\Http\Controllers\Admin\SliderController::class);
     Route::resource('banners', App\Http\Controllers\Admin\BannerController::class);
-
-
 
 });
 

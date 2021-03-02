@@ -57,7 +57,10 @@ class MerchantController extends Controller
         $logo_image = $request->logo;
         $logo_image_new_name = time() . $logo_image->getClientOriginalName();
         $logo_image->move('uploads/shops', $logo_image_new_name);
+        $str = strtolower($request->shop_name);
+
         $shop->shop_name = $request->shop_name;
+        $shop->alias = preg_replace('/\s+/', '-', $str);
         $shop->licence = $request->licence;
         $shop->phone = $request->phone;
         $shop->address = $request->address;
